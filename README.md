@@ -1,50 +1,202 @@
-# Welcome to your Expo app 👋
+# Bandhan - Wedding Planning App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A comprehensive wedding planning application built with React Native and Expo, featuring Firebase integration for data persistence and user authentication.
 
-## Get started
+## Features
 
-1. Install dependencies
+- **Guest Management**: Add, edit, and track RSVP status for wedding guests
+- **Wedding Checklist**: Comprehensive timeline-based checklist with categories
+- **Budget Calculator**: Track and manage wedding budget across different categories
+- **Vendor Management**: Organize and track wedding vendors and their details
+- **User Authentication**: Secure login/signup with Firebase Authentication
+- **Data Persistence**: All data is stored securely in Firebase Firestore
+- **Real-time Updates**: Changes sync across devices in real-time
 
-   ```bash
-   npm install
-   ```
+## Tech Stack
 
-2. Start the app
+- **Frontend**: React Native with Expo
+- **Navigation**: Expo Router
+- **Authentication**: Firebase Authentication
+- **Database**: Firebase Firestore
+- **State Management**: React Context API
+- **UI Components**: Custom components with React Native
 
-   ```bash
-   npx expo start
-   ```
+## Getting Started
 
-In the output, you'll find options to open the app in a
+### Prerequisites
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- Node.js (v16 or higher)
+- npm or yarn
+- Expo CLI
+- Firebase account
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Installation
 
-## Get a fresh project
-
-When you're ready, run:
-
+1. Clone the repository:
 ```bash
-npm run reset-project
+git clone <repository-url>
+cd Bandhan
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
+```bash
+npm install
+```
 
-## Learn more
+3. Set up Firebase:
+   - Follow the [Firebase Setup Guide](./FIREBASE_SETUP.md)
+   - Update the Firebase configuration in `config/firebase.ts`
 
-To learn more about developing your project with Expo, look at the following resources:
+4. Start the development server:
+```bash
+npm start
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+5. Run on your preferred platform:
+```bash
+# iOS
+npm run ios
 
-## Join the community
+# Android
+npm run android
 
-Join our community of developers creating universal apps.
+# Web
+npm run web
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Project Structure
+
+```
+Bandhan/
+├── app/                    # Main app screens
+│   ├── (tabs)/            # Tab-based navigation
+│   │   ├── index.tsx      # Home screen
+│   │   ├── guests.tsx     # Guest management
+│   │   ├── checklist.tsx  # Wedding checklist
+│   │   ├── budget.tsx     # Budget calculator
+│   │   └── vendors.tsx    # Vendor management
+│   ├── login.tsx          # Authentication screen
+│   └── _layout.tsx        # Root layout
+├── components/            # Reusable components
+├── config/               # Configuration files
+│   └── firebase.ts       # Firebase configuration
+├── contexts/             # React Context providers
+│   └── AuthContext.tsx   # Authentication context
+├── services/             # Firebase service functions
+│   └── firebaseService.ts # Database operations
+├── constants/            # App constants
+├── hooks/               # Custom React hooks
+└── assets/              # Images, fonts, etc.
+```
+
+## Firebase Integration
+
+The app uses Firebase for:
+
+- **Authentication**: Email/password sign-in and sign-up
+- **Database**: Firestore for storing all wedding data
+- **Security**: User-specific data access with Firestore security rules
+
+### Database Collections
+
+- `guests`: Guest list with RSVP status
+- `checklistItems`: Wedding planning checklist items
+- `budgetCategories`: Budget allocation by category
+- `vendors`: Vendor information and booking status
+
+### Security
+
+All data is secured with Firestore security rules that ensure users can only access their own data. Each document includes a `userId` field that matches the authenticated user's ID.
+
+## Key Features
+
+### Guest Management
+- Add guests with optional plus-one information
+- Track RSVP status (pending, confirmed, declined)
+- View guest statistics and counts
+- Delete guests with confirmation
+
+### Wedding Checklist
+- Timeline-based organization (4 months, 3 months, etc.)
+- Category filtering (Venue, Catering, Attire, etc.)
+- Mark items as complete/incomplete
+- Comprehensive wedding planning tasks
+
+### Budget Calculator
+- Set total wedding budget
+- Automatic percentage-based category allocation
+- Indian currency formatting (₹)
+- Visual budget breakdown
+
+### Vendor Management
+- Add vendor details (name, category, contact info)
+- Track booking status
+- Organize by vendor categories
+- Add notes and additional information
+
+## Authentication Flow
+
+1. Users can sign up with email and password
+2. Existing users can sign in with their credentials
+3. Authentication state is managed globally with React Context
+4. All database operations require authentication
+5. Users are redirected to login if not authenticated
+
+## Development
+
+### Adding New Features
+
+1. Create new screens in the `app/` directory
+2. Add Firebase service functions in `services/firebaseService.ts`
+3. Update security rules if needed
+4. Test with Firebase Console
+
+### Database Schema Changes
+
+When modifying the database schema:
+
+1. Update TypeScript interfaces in `services/firebaseService.ts`
+2. Update Firebase security rules
+3. Test data migration if needed
+4. Update related components
+
+## Deployment
+
+### Expo Build
+
+```bash
+# Build for production
+expo build:android
+expo build:ios
+```
+
+### Firebase Deployment
+
+1. Configure Firebase hosting (if needed)
+2. Update production Firebase configuration
+3. Set up proper security rules for production
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
+
+## Support
+
+For support and questions:
+- Check the [Firebase Setup Guide](./FIREBASE_SETUP.md)
+- Review Firebase documentation
+- Open an issue in the repository
+
+## Acknowledgments
+
+- Firebase for backend services
+- Expo for the development platform
+- React Native community for tools and libraries
