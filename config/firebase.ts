@@ -5,14 +5,7 @@ import { getStorage } from 'firebase/storage';
 
 // Your Firebase configuration
 // Replace these values with your actual Firebase project configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDnduvuvB3TdIz_Rop2jJlQf9pbuFQ_IUI",
-    authDomain: "bandhan-a347b.firebaseapp.com",
-    projectId: "bandhan-a347b",
-    storageBucket: "bandhan-a347b.firebasestorage.app",
-    messagingSenderId: "817530679697",
-    appId: "1:817530679697:web:6db3875cca25b52c7a2a30",
-    measurementId: "G-F2LRD13RVC"
+const firebaseConfig = { 
   };
 
 // Initialize Firebase
