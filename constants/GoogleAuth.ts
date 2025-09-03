@@ -1,14 +1,14 @@
-// Google OAuth Configuration using Expo Auth Session
+
 import * as AuthSession from 'expo-auth-session';
 import * as WebBrowser from 'expo-web-browser';
 
-// Complete the auth session for web browsers
+
 WebBrowser.maybeCompleteAuthSession();
 
 export const GOOGLE_AUTH_CONFIG = {
-  // Replace these with your actual Google OAuth credentials
-  CLIENT_ID: '817530679697-hj03bnfkoj04oratlc59tej0pn6h9t13.apps.googleusercontent.com',
-  CLIENT_SECRET: 'ANIMESH10',
+  
+  CLIENT_ID: ' ',
+  CLIENT_SECRET: ' ',
   
   // OAuth endpoints
   AUTH_ENDPOINT: 'https://accounts.google.com/o/oauth2/v2/auth',
@@ -44,12 +44,12 @@ export const createGoogleAuthRequest = () => {
   });
 };
 
-// Get the redirect URI that Expo generates
+
 export const getRedirectUri = () => {
   return 'http://localhost:8081/--/login';
 };
 
-// Log the redirect URI for debugging (remove this in production)
+
 export const logRedirectUri = () => {
   const uri = getRedirectUri();
   console.log('Generated Redirect URI:', uri);
